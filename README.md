@@ -1,6 +1,6 @@
 # README
 
-A personality test application. Start the app locally and go to localhost:3000/test to do it.
+A personality test application. Start the app locally and go to localhost:3000/survey to do it.
 
 * Ruby version
 
