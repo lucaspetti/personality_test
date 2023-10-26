@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+A personality test application. Start the app locally and go to localhost:3000/test to do it.
 
 * Ruby version
 
-* System dependencies
+3.0.3
 
 * Configuration
 
 * Database creation
 
-* Database initialization
+```
+rake db:create
+rake db:migrate
+```
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rspec
+```
