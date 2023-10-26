@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_26_110659) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_26_141934) do
+  create_table "answers", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.integer "score"
+    t.string "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "survey_type"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "survey_answers", force: :cascade do |t|
+    t.integer "survey_id", null: false
+    t.integer "answer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_survey_answers_on_answer_id"
+    t.index ["survey_id"], name: "index_survey_answers_on_survey_id"
+  end
+
   create_table "surveys", force: :cascade do |t|
     t.integer "score"
     t.string "session_id"
@@ -18,4 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_110659) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "survey_answers", "answers"
+  add_foreign_key "survey_answers", "surveys"
 end
