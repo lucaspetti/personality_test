@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "/test" => "surveys#new"
-  resources :surveys, only: :create
+  resources :surveys, only: [:create, :show]
 end
