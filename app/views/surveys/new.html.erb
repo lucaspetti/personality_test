@@ -1,1 +1,21 @@
-<h1>Take your Personality Test</h1>
+<div class="mx-auto">
+  <h1 class="text-3xl my-12">Take your Personality Test</h1>
+
+  <%= form_with model: @survey, url: surveys_path, id: "survey-form", class: "", method: :post do |form| %>
+    <% @questions.each do |question| %>
+      <div class="container my-12">
+        <h2 class="mb-6"><%= question.title %></h2>
+        <% question.answers.each do |answer| %>
+          <div class="h-fit my-4">
+            <%= form.radio_button "question_#{question.id}", answer.score, required: true %>
+            <%= form.label "question_#{question.id}", answer.label, class: "font-normal text-left" %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="my-20 text-center">
+      <%= form.submit "Submit", class: "p-4 border-solid border-2 font-bold border-sky-500" %>
+    </div>
+  <% end %>
+</div>

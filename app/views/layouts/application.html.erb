@@ -11,6 +11,16 @@
   </head>
 
   <body>
+    <% if flash[:alert] %>
+      <div class="text-center p-1 text-red-500">
+        <%= flash[:alert] %>
+      </div>
+    <% elsif flash[:notice] %>
+      <div class="text-center p-1 text-cyan-700">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
